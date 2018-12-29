@@ -1,0 +1,26 @@
+{
+  "name": "Ant-project",
+  "version": "1.0.0",
+  "description": "Ant Design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarasYe/Ant-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarasYe/Ant-project/issues"
+  },
+  "homepage": "https://github.com/KarasYe/Ant-project#readme",
+  "devDependencies": {
+    "umi": "^2.3.1",
+    "umi-plugin-react": "^1.3.1"
+  }
+}
