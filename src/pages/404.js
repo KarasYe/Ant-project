@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'umi/locale';
 
 export default () => {
-  return <div><FormattedMessage id="helloworld" /></div>;
+  return <div><FormattedMessage id="pageNotExist" /></div>;
 }
