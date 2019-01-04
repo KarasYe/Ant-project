@@ -11,6 +11,14 @@ const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 
 export default class BasicLayout extends Component {
+    state = {
+        collapsed: true,
+    };
+    menuToggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    };
     changLang() {
         const locale = getLocale();
         if (!locale || locale === 'zh-CN') {
@@ -20,77 +28,55 @@ export default class BasicLayout extends Component {
         }
     };
     render() {
-        return <Layout>
-            <Sider width={256} style={{ minHeight: "100vh" }}>
-                <div style={{ height: "32px", background: "rgba(255,255,255,.2)", margin: "16px" }} />
+        return (
+<Layout>
+            <Sider
+                trigger={null}
+                collapsible
+                collapsed={this.state.collapsed}
+                className={LayoutStyle.sider}
+            >
+                <div className={LayoutStyle.logo}>
+                    <Link to="/">
+                        <Icon type="html5" />
+                    </Link>
+                </div>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                    <Menu.Item key="1">
-                        <Link to="/helloworld">
-                            <Icon type="smile" />
-                            <span>
-                                <FormattedMessage id="helloworld" />
-                            </span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="5">
-                        <Link to="/puzzlecards">
-                            <Icon type="exception" />
-                            <span>
-                                <FormattedMessage id="FAQ" />
-                            </span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="6">
-                        <Link to="/list">
-                            <Icon type="bars" />
-                            <span>
-                                <FormattedMessage id="list" />
-                            </span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="7">
-                        <Link to="/upload">
-                            <Icon type="upload" />
-                            <span>
-                                <FormattedMessage id="upload" />
-                            </span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="8">
-                        <Link to="/cards">
-                            <Icon type="tags" />
-                            <span>
-                                <FormattedMessage id="cards" />
-                            </span>
-                        </Link>
-                    </Menu.Item>
                     <SubMenu key="sub1" title={<span>
-                        <Icon type="dashboard" />
+                        <Icon type="file-text" />
                         <span>
-                            <FormattedMessage id="dashboard" />
+                            <FormattedMessage id="resume" />
                         </span>
                     </span>}>
-                        <Menu.Item key="2">
-                            <Link to="/dashboard/analysis">
-                                <Icon type="line-chart" />
+                        <Menu.Item key="1">
+                            <Link to="/resume/profile">
+                                <Icon type="user" />
                                 <span>
-                                    <FormattedMessage id="analysis" />
+                                    <FormattedMessage id="profile" />
+                                </span>
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="2">
+                            <Link to="/resume/work">
+                                <Icon type="bank" />
+                                <span>
+                                    <FormattedMessage id="work" />
                                 </span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link to="/dashboard/monitor">
-                                <Icon type="heat-map" />
+                            <Link to="/resume/project">
+                                <Icon type="trophy" />
                                 <span>
-                                    <FormattedMessage id="monitor" />
+                                    <FormattedMessage id="project" />
                                 </span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="4">
-                            <Link to="/dashboard/workplace">
-                                <Icon type="desktop" />
+                            <Link to="/resume/other">
+                                <Icon type="appstore" />
                                 <span>
-                                    <FormattedMessage id="workplace" />
+                                    <FormattedMessage id="other" />
                                 </span>
                             </Link>
                         </Menu.Item>
@@ -100,8 +86,19 @@ export default class BasicLayout extends Component {
             <Layout>
                 <Header className={LayoutStyle.header}>
                     <Row type="flex" justify="center">
-                        <Col span={22}>Header</Col>
-                        <Col span={2}>
+                        <Col span={1}>
+                            <Icon
+                                className={LayoutStyle.menu}
+                                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                                onClick={this.menuToggle}
+                            />
+                        </Col>
+                        <Col span={22}>
+                            <a href="https://github.com/KarasYe/Ant-project" target="_blank">
+                                <Icon type="github" className={LayoutStyle.github} />
+                            </a>
+                        </Col>
+                        <Col span={1}>
                             <Button size="small" onClick={() => {
                                 this.changLang();
                             }}>
@@ -119,6 +116,7 @@ export default class BasicLayout extends Component {
                     Ant Design ©2019 Created by Ye Binbin
               </Footer>
             </Layout>
-        </Layout>;
+        </Layout>
+        )
     }
 }

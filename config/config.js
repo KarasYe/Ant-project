@@ -1,4 +1,5 @@
 export default {
+  history: 'hash',
   plugins: [
     [
       "umi-plugin-react",
@@ -14,7 +15,7 @@ export default {
   // 若已有配置
   outputPath: "./build",
   theme: {
-    "@primary-color": "#30b767", // 绿色
+    "@primary-color": "#30b767",
   },
   routes: [
     {
@@ -23,7 +24,7 @@ export default {
       routes: [
         {
           path: "/",
-          component: "Helloworld"
+          component: "resume/profile"
         },
         {
             path: "/helloworld",
@@ -44,7 +45,7 @@ export default {
         {
             path: "/upload",
             component: "upload"
-          },
+        },
         {
           path: "/dashboard",
           routes: [
@@ -53,7 +54,16 @@ export default {
             { path: "/dashboard/workplace", component: "Dashboard/Workplace" }
           ]
         },
-        { component: '404.js' }, 
+        {
+          path: "/resume",
+          routes: [
+            { path: "/resume/profile", component: "resume/profile" },
+            { path: "/resume/work", component: "resume/work" },
+            { path: "/resume/project", component: "resume/project" },
+            { path: "/resume/other", component: "resume/other" }
+          ]
+        },
+        { component: '404' }, 
       ]
     }
   ]

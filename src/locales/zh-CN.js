@@ -1,6 +1,6 @@
 export default {
     lang: 'CN',
-    helloworld: '你好',
+    helloworld: '你好,世界!',
     FAQ: 'FAQ',
     list: '列表页',
     upload: '上传页',
@@ -9,5 +9,18 @@ export default {
     analysis: '分析页',
     monitor: '监控页',
     workplace: '工作台',
-    pageNotExist: '页面不存在！'
+    resume: '个人简历',
+    profile: '个人资料',
+    work: '工作经验',
+    project: '项目经验',
+    other: '其他资料',
+    techStack: '技术栈',
+    introduce: '个人介绍',
+    individual: '工作期望',
+    workTime: '工作时长',
+    keyWord: '关键词',
+    education: '教育经历',
+    social: '社交主页',
+    tag: '标签',
+    pageNotExist: '页面不存在!'
 }

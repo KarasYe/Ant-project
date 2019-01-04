@@ -26,7 +26,7 @@ class List extends React.Component {
       dataIndex: 'url',
       render(value) {
         return (
-          <a href={value}>{value}</a>
+          <a href={value} target='_blank'>{value}</a>
         );
       },
     },
