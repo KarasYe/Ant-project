@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'umi/locale';
 import { Component } from 'react';
-import { Row, Col, Icon } from 'antd';
+import { Row, Col, Icon, Tooltip } from 'antd';
 import style from '../pages/resume/resume.less';
 
 export default class RowInfo extends Component {
@@ -9,11 +9,13 @@ export default class RowInfo extends Component {
         const title = (
             <FormattedMessage id={data.titleId} />
         );
-        const content = data.content.map((item) => {
+        const content = data.content.map((item,index) => {
             return (
-                <Col span={6} className={style.col} key={item.key}>
+                <Col span={6} className={style.col} key={title+index}>
                     <Icon type={item.type} theme="filled" />
-                    <span>{item.name}</span>
+                    <Tooltip title={item.tip}>
+                        {item.name}
+                    </Tooltip>
                 </Col>
             )
         });

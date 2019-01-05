@@ -16,12 +16,12 @@ const data = [
       binbin: 75,
     },
     {
-      item: "UI",
-      binbin: 80
+      item: "NodeJs",
+      binbin: 70
     },
     {
-      item: "UX",
-      binbin: 70
+      item: "Vue",
+      binbin: 65
     },
     {
       item: "HTML5",
@@ -42,19 +42,19 @@ const individual = {
         {
             type: 'reconciliation',
             name: 'web前端',
-            key: 'individual01'
+            tip: '期望职位'
         }, {
             type: 'pay-circle',
             name: '保密',
-            key: 'individual02'
+            tip: '期望薪资'
         }, {
             type: 'project',
             name: '不限行业',
-            key: 'individual03'
+            tip: '期望行业'
         }, {
             type: 'environment',
             name: '广州市',
-            key: 'individual04'
+            tip: '期望地点'
         },
     ]
 }

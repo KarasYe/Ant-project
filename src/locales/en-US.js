@@ -22,5 +22,6 @@ export default {
     education: 'educational experience',
     social: 'Social homepage',
     tag: 'Tag',
+    timeLine: 'Timeline',
     pageNotExist: '404 not found'
 }

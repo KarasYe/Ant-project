@@ -22,5 +22,6 @@ export default {
     education: '教育经历',
     social: '社交主页',
     tag: '标签',
+    timeLine: '时间轴',
     pageNotExist: '页面不存在!'
 }

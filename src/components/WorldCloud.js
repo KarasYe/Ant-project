@@ -1,4 +1,4 @@
-import $ from "jquery";
+// import $ from "jquery";
 import React from "react";
 import {
   Chart,
@@ -90,8 +90,8 @@ export default class Wordcloud extends React.Component {
     return (
       <div>
         <Chart
-          height={window.innerHeight}
-          width={window.innerWidth}
+          height={400}
+          width={500}
           data={dv}
           scale={scale}
           padding={0}

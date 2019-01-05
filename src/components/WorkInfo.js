@@ -24,15 +24,15 @@ export default class WorkInfo extends Component {
                   <span>{item.title}</span>
                 </h5>
                 <Row>
-                  <Col span={5} className={style.col}>
+                  <Col span={6} className={style.col}>
                     <Icon type="environment" />
                     <span>{item.env}</span>
                   </Col>
-                  <Col span={4} className={style.col}>
+                  <Col span={6} className={style.col}>
                     <Icon type="reconciliation" />
                     <span>{item.worker}</span>
                   </Col>
-                  <Col span={6} className={style.col}>
+                  <Col span={8} className={style.col}>
                     <Icon type="calendar" />
                     <span>{item.workTime}</span>
                   </Col>

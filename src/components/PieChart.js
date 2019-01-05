@@ -5,6 +5,7 @@ import {
     Axis,
     Tooltip,
     Coord,
+    Legend,
     Label
 } from "bizcharts";
 import DataSet from "@antv/data-set";
@@ -31,7 +32,7 @@ export default class pieChart extends React.Component {
         return (
             <div>
                 <Chart
-                    height={300}
+                    height={350}
                     data={dv}
                     scale={cols}
                     padding={[0, 0, 0, 0]}
@@ -39,22 +40,28 @@ export default class pieChart extends React.Component {
                 >
                     <Coord type="theta" radius={0.75} />
                     <Axis name="percent" />
+                    <Legend
+                        position="bottom"
+                        offsetY={-window.innerHeight / 2 + 360}
+                        offsetX={0}
+                    />
                     <Tooltip
                         showTitle={false}
-                        itemTpl="<li><span style='background-color:{color};' class='g2-tooltip-marker'></span>{count} mouth</li>"
+                        itemTpl="<li><span style='background-color:{color};' class='g2-tooltip-marker'></span><span style='margin-right:5px;'>工作时长:{count} mouth</span><span>企业类型：{type}</span></li>"
                     />
                     <Geom
                         type="intervalStack"
                         position="percent"
                         color="item"
                         tooltip={[
-                            "item*percent*count",
-                            (item, percent, count) => {
+                            "item*percent*count*type",
+                            (item, percent, count, type) => {
                                 percent = percent * 100 + "%";
                                 return {
                                     name: item,
                                     value: percent,
-                                    count: count
+                                    count: count,
+                                    type: type
                                 };
                             }
                         ]}
@@ -72,7 +79,7 @@ export default class pieChart extends React.Component {
                                 rotate: 0,
                                 textAlign: "center",
                                 shadowBlur: 1,
-                                fontSize: "16",
+                                fontSize: "14",
                                 shadowColor: "rgba(0, 0, 0, .45)"
                             }}
                         />
