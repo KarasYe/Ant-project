@@ -32,7 +32,7 @@ export default class pieChart extends React.Component {
         return (
             <div>
                 <Chart
-                    height={350}
+                    height={300}
                     data={dv}
                     scale={cols}
                     padding={[0, 0, 0, 0]}

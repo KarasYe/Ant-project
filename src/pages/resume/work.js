@@ -1,6 +1,6 @@
 import { FormattedMessage } from "umi/locale";
 import { Component } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Calendar } from "antd";
 import PieChart from '../../components/PieChart.js'
 import style from "./resume.less";
 import WorkInfo from "../../components/WorkInfo.js";
@@ -74,8 +74,11 @@ export default class work extends Component {
               <FormattedMessage id="workTime" />
             </h1>
             <PieChart data={workData} />
+            <div className={style.calendar}>
+              <Calendar fullscreen={false}/>
+            </div>
           </Col>
-          <Col span={20} offset={2}>
+          <Col span={16} offset={4}>
             <div className={style.timeline}>
               <TimeLine />
             </div>

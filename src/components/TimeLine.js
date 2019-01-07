@@ -18,7 +18,7 @@ export default class TimeLine extends Component {
         // });
         return (
             <div>
-                <Button type="primary" style={{ marginTop: 16 }} onClick={this.handleClick}>倒叙切换</Button>
+                <Button type="primary" style={{ margin: 16 }} onClick={this.handleClick}>倒叙</Button>
                 <Timeline mode="alternate" pending="旅程还在继续，我的路还在脚下..." reverse={this.state.reverse}>
                 <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />}>毕业了！ 2015-06</Timeline.Item>
                 <Timeline.Item>毕业第一份工作，加入停车网 2015-07</Timeline.Item>

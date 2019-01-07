@@ -7,7 +7,7 @@ import RowInfo from '../../components/RowInfo.js';
 
 const content = (
     <div className={style.qr}>
-        <img src="http://www.09883883.work/Resume/img/qr.jpeg" />
+        <img src="https://www.09883883.work/Resume/img/qr.jpeg" />
     </div>
 );
 const data = [
@@ -73,7 +73,7 @@ export default class Profile extends Component {
                     <Col span={18}>
                         <Row type="flex" justify="center">
                             <Col span={6} offset={2} className={style.avatar}>
-                                <Avatar src="http://www.09883883.work/Resume/img/avatar.jpg" size={150} icon="user" />
+                                <Avatar src="https://www.09883883.work/Resume/img/avatar.jpg" size={150} icon="user" />
                             </Col>
                             <Col span={16}>
                                 <div className={style.profile}>

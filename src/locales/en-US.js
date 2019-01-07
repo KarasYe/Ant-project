@@ -1,6 +1,6 @@
 export default {
     lang: 'EN',
-    helloworld: 'hello world!',
+    helloworld: 'Hello world!',
     FAQ: 'FAQ',
     list: 'List',
     upload: 'Upload',
@@ -19,8 +19,8 @@ export default {
     individual: 'Individual expectations',
     workTime: 'Work time',
     keyWord: 'Key word',
-    education: 'educational experience',
-    social: 'Social homepage',
+    education: 'Educational experience',
+    social: 'Social page',
     tag: 'Tag',
     timeLine: 'Timeline',
     pageNotExist: '404 not found'

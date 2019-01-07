@@ -51,7 +51,8 @@ export default {
           routes: [
             { path: "/dashboard/analysis", component: "Dashboard/Analysis" },
             { path: "/dashboard/monitor", component: "Dashboard/Monitor" },
-            { path: "/dashboard/workplace", component: "Dashboard/Workplace" }
+            { path: "/dashboard/workplace", component: "Dashboard/Workplace" },
+            { component: '404' }
           ]
         },
         {
@@ -60,10 +61,11 @@ export default {
             { path: "/resume/profile", component: "resume/profile" },
             { path: "/resume/work", component: "resume/work" },
             { path: "/resume/project", component: "resume/project" },
-            { path: "/resume/other", component: "resume/other" }
+            { path: "/resume/other", component: "resume/other" },
+            { component: '404' },
           ]
         },
-        { component: '404' }, 
+        { component: '404' }
       ]
     }
   ]
