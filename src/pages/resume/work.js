@@ -1,5 +1,5 @@
 import { FormattedMessage } from "umi/locale";
-import { Component } from "react";
+import React from "react";
 import { Row, Col, Calendar } from "antd";
 import PieChart from '../../components/PieChart.js'
 import style from "./resume.less";
@@ -58,7 +58,7 @@ const workData = [{
 }
 ];
 
-export default class work extends Component {
+export default class Work extends React.Component {
   render() {
     return (
       <div className={style.wrapper}>

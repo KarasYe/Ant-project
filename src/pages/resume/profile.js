@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'umi/locale';
-import { Component } from 'react';
+import React from 'react';
 import { Avatar, Row, Col, Icon, Popover, Card } from 'antd';
 import FoldChart from '../../components/FoldChart.js'
 import style from './resume.less';
@@ -58,7 +58,7 @@ const individual = {
         },
     ]
 }
-export default class Profile extends Component {
+export default class Profile extends React.Component {
     render() {
         return (
             <div className={style.wrapper}>

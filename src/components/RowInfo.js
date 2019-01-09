@@ -1,9 +1,9 @@
 import { FormattedMessage } from 'umi/locale';
-import { Component } from 'react';
+import React from 'react';
 import { Row, Col, Icon, Tooltip } from 'antd';
 import style from '../pages/resume/resume.less';
 
-export default class RowInfo extends Component {
+export default class RowInfo extends React.Component {
     render() {
         const data = this.props.data;
         const title = (

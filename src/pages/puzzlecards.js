@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card } from 'antd';
 import { connect } from 'dva';
 
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class PuzzleCardsPage extends Component {
+export default class PuzzleCardsPage extends React.Component {
   componentDidMount() {
     this.props.onDidMount();
   }

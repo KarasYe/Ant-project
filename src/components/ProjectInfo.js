@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 import { Row, Col, Icon, Collapse } from 'antd';
 import style from '../pages/resume/resume.less';
 
 const Panel = Collapse.Panel
 
-export default class ProjectInfo extends Component {
+export default class ProjectInfo extends React.Component {
     render() {
         const data = this.props.data;
         const content = data.map((item, index) => {

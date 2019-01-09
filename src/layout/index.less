@@ -1,7 +1,14 @@
 .header {
   text-align: center;
+  color: #001529;
+  padding: 0;
+  background: #ffffff;
+}
+.dark_header{
+  text-align: center;
   color: #ffffff;
   padding: 0;
+  background: #001529
 }
 .sider {
   width: 256px;
@@ -23,6 +30,22 @@
     }
   }
 }
+.dark_logo{
+  height: 32px;
+  font-size: 32px;
+  line-height: 1;
+  margin: 16px;
+  text-align: center;
+  a {
+    i {
+      color: #001529;
+      transition: color 0.3s;
+      &:hover {
+        color: #30b767;
+      }
+    }
+  }
+}
 .menu {
   font-size: 18px;
   line-height: 64px;
@@ -37,6 +60,15 @@
   font-size: 32px;
   line-height: 64px;
   color: #ffffff;
+  transition: color 0.3s;
+  &:hover {
+    color: #30b767;
+  }
+}
+.dark_github {
+  font-size: 32px;
+  line-height: 64px;
+  color: #001529;
   transition: color 0.3s;
   &:hover {
     color: #30b767;

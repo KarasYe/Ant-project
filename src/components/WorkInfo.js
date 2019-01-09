@@ -1,9 +1,8 @@
-import { FormattedMessage } from 'umi/locale';
-import { Component } from 'react';
+import React from 'react';
 import { Row, Col, Icon, Card, Tag} from 'antd';
 import style from '../pages/resume/resume.less';
 
-export default class WorkInfo extends Component {
+export default class WorkInfo extends React.Component {
     render() {
         const data = this.props.data;
         const content = data.map((item,index) => {

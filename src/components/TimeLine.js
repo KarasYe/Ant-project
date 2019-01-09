@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import React from 'react';
 import { Timeline, Icon, Button } from 'antd';
 
-export default class TimeLine extends Component {
+export default class TimeLine extends React.Component {
     state = {
         reverse: true,
       }

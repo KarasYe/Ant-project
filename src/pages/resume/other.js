@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'umi/locale';
-import { Component } from 'react';
+import React from 'react';
 import { Row, Col, Icon, List, Card, Tag } from 'antd';
 import style from './resume.less';
 import RowInfo from '../../components/RowInfo';
@@ -41,7 +41,7 @@ const education = {
     ]
 };
 
-export default class Profile extends Component {
+export default class Other extends React.Component {
     render() {
         return (
             <div className={style.wrapper}>

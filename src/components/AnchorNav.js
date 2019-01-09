@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 import { Anchor } from 'antd';
 
 const { Link } = Anchor;
@@ -8,7 +8,7 @@ const handleClick = (e, link) => {
   console.log(link);
 };
 
-export default class AnchorNav extends Component {
+export default class AnchorNav extends React.Component {
     render() {
         const data = this.props.data;
         const content = data.map((item,index) => {
@@ -18,7 +18,7 @@ export default class AnchorNav extends Component {
         });
         return (
             <div>
-              <Anchor onClick={handleClick}>
+              <Anchor onClick={handleClick} showInkInFixed='false'>
               {content}
               </Anchor>
             </div>

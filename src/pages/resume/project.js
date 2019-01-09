@@ -1,5 +1,5 @@
 import { FormattedMessage } from "umi/locale";
-import { Component } from "react";
+import React from "react";
 import { Row, Col } from "antd";
 import style from "./resume.less";
 import Wordcloud from "../../components/WorldCloud";
@@ -149,7 +149,7 @@ const projectData = [{
 }
 ];
 
-export default class project extends Component {
+export default class Project extends React.Component {
   render() {
     return (
       <div className={style.wrapper}>
