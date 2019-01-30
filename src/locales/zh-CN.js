@@ -23,5 +23,6 @@ export default {
     social: '社交主页',
     tag: '标签',
     timeLine: '时间轴',
+    plan: '我的计划',
     pageNotExist: '页面不存在!'
 }

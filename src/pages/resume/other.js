@@ -86,11 +86,6 @@ export default class Other extends React.Component {
                             <Tag color="#87d068" className={style.tip}>90后</Tag>
                             <Tag color="#108ee9" className={style.tip}>前端技术小菜鸡</Tag>
                             <Tag color="#88B04B" className={style.tip}>桌游达人</Tag>
-                            <Tag color="#FF6F61" className={style.tip}>回首，掏</Tag>
-                            <Tag color="#108ee9" className={style.tip}>鬼刀一开，看不见</Tag>
-                            <Tag color="#87d068" className={style.tip}>走位，走位</Tag>
-                            <Tag color="#f50" className={style.tip}>难受～～</Tag>
-                            <Tag color="#2db7f5" className={style.tip}>09883883</Tag>
                         </Card>
                     </Col>
                 </Row>

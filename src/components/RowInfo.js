@@ -11,7 +11,7 @@ export default class RowInfo extends React.Component {
         );
         const content = data.content.map((item,index) => {
             return (
-                <Col span={6} className={style.col} key={title+index}>
+                <Col span={6} className={style.col} key={item.title+index}>
                     <Icon type={item.type} theme="filled" />
                     <Tooltip title={item.tip}>
                         {item.name}

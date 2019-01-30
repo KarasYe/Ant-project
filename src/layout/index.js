@@ -7,7 +7,6 @@ import LayoutStyle from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-// 引入子菜单组件
 const SubMenu = Menu.SubMenu;
 
 export default class BasicLayout extends Component {
@@ -140,7 +139,7 @@ export default class BasicLayout extends Component {
                     </Content>
                     <Footer className={LayoutStyle.footer}>
                         Ant Design ©2019 Created by Ye Binbin
-              </Footer>
+                    </Footer>
                 </Layout>
             </Layout>
         )

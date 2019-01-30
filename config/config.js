@@ -19,6 +19,16 @@ export default {
   },
   routes: [
     {
+      path: "/blood_bound",
+      component: "../layout/layoutBB",
+      routes: [
+        {
+          path: "/blood_bound",
+          component: "BloodBound"
+        }
+      ]
+    },
+    {
       path: "/",
       component: "../layout",
       routes: [
@@ -27,9 +37,13 @@ export default {
           component: "resume/profile"
         },
         {
+          path: "/myPlan",
+          component: 'planning/myPlan'
+        },
+        {
             path: "/helloworld",
             component: "Helloworld"
-          },
+        },
         {
           path: "/cards",
           component: "cards"
@@ -39,12 +53,12 @@ export default {
             component: "puzzlecards" 
         },
         {
-            path: "/list",
-            component: "list"
-        },
-        {
             path: "/upload",
             component: "upload"
+        },
+        {
+          path: "/list",
+          component: "/list"
         },
         {
           path: "/dashboard",

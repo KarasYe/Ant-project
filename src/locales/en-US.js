@@ -23,5 +23,6 @@ export default {
     social: 'Social page',
     tag: 'Tag',
     timeLine: 'Timeline',
+    plan: 'My planning',
     pageNotExist: '404 not found'
 }
