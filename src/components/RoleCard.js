@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Card, Rate, Icon, Row, Col, notification } from 'antd';
+import { Card, Rate, Icon, Row, Col, notification, Skeleton } from 'antd';
 import style from '../pages/BloodBound/index.less';
 
 export default class RoleCard extends Component {
@@ -7,15 +7,18 @@ export default class RoleCard extends Component {
         RateDisabled: true,
         actionRole: '角色牌',
         actionCamp: '阵营牌',
+        protect: false,
+        keepFan: false,
         showRole: false,
         showFirstCamp: false,
         showSecondCamp: false,
         rateValue: 4,
         hideenCamp: false,
+        loading: true,
         roleInfo: this.props.roleInfo
     };
     handleClick = (e) => {
-        if (!this.rateValueCheck()) {
+        if (!this.rateValueCheck(e)) {
             return;
         }
         let rateValue = this.state.rateValue;
@@ -48,11 +51,10 @@ export default class RoleCard extends Component {
                 })
                 break;
             default:
-                console.log('1')
                 break;
         }
     };
-    rateValueCheck = () => {
+    rateValueCheck = (e) => {
         if (this.state.rateValue === 0) {
             notification.open({
                 message: '温馨提示',
@@ -60,6 +62,44 @@ export default class RoleCard extends Component {
                 icon: <Icon type="exclamation-circle" style={{ color: '#F8B800' }} />
             });
             return false
+        } else if (this.state.protect) {
+            switch (e.currentTarget.id) {
+                case 'showRole':
+                    if (!this.state.showRole) {
+                        notification.open({
+                            message: '温馨提示',
+                            description: '请确保该玩家没有被护卫技能保护（如果护卫血量只剩一滴，护盾无效，需要手动关闭）',
+                            icon: <Icon type="exclamation-circle" style={{ color: '#F8B800' }} />
+                        });
+                        return false
+                    } else {
+                        return true
+                    }
+                case 'showFirstCamp':
+                    if (!this.state.showFirstCamp) {
+                        notification.open({
+                            message: '温馨提示',
+                            description: '请确保该玩家没有被护卫技能保护（如果护卫血量只剩一滴，护盾无效，需要手动关闭）',
+                            icon: <Icon type="exclamation-circle" style={{ color: '#F8B800' }} />
+                        });
+                        return false
+                    } else {
+                        return true
+                    }
+                case 'showSecondCamp':
+                    if (!this.state.showSecondCamp) {
+                        notification.open({
+                            message: '温馨提示',
+                            description: '请确保该玩家没有被护卫技能保护（如果护卫血量只剩一滴，护盾无效，需要手动关闭）',
+                            icon: <Icon type="exclamation-circle" style={{ color: '#F8B800' }} />
+                        });
+                        return false
+                    } else {
+                        return true
+                    }
+                default:
+                    return false
+            }
         } else {
             return true
         }
@@ -97,6 +137,18 @@ export default class RoleCard extends Component {
             hideenCamp: !hideenCamp
         })
     };
+    protectChange = () => {
+        let protect = this.state.protect
+        this.setState({
+            protect: !protect
+        })
+    }
+    keepFan = () => {
+        let keepFan = this.state.keepFan
+        this.setState({
+            keepFan: !keepFan
+        })
+    }
     setCamp = (item) => {
         let iconColor = '#001529';
         let iconType = 'question-circle';
@@ -139,18 +191,16 @@ export default class RoleCard extends Component {
             <Icon style={{ color: iconColor, fontSize: "20px" }} type={iconType} />
         )
     };
+    componentDidMount(){
+        setTimeout(() => {
+            this.setState({ loading: false });
+          }, 2000);
+    }
     componentWillReceiveProps(nextProps) {
         if ((nextProps.roleInfo !== this.props.roleInfo)) {
             let data = nextProps.roleInfo;
             this.setState({
-                RateDisabled: true,
-                actionRole: '角色牌',
-                actionCamp: '阵营牌',
-                showRole: false,
-                showFirstCamp: false,
-                showSecondCamp: false,
-                rateValue: 4,
-                hideenCamp: false,
+                loading: true,
                 roleInfo: data
             })
         }
@@ -167,6 +217,7 @@ export default class RoleCard extends Component {
                     <a id="showSecondCamp" onClick={this.handleClick}>{sCamp}</a>,
                     this.playerState(this.state.rateValue)
                 ]}>
+                <Skeleton active avatar paragraph={{ rows: 2 }} loading={this.state.loading}>
                 <Row type="flex" align="middle">
                     <Col span={14}>
                         <Card.Meta
@@ -179,15 +230,43 @@ export default class RoleCard extends Component {
                         />
                     </Col>
                     <Col span={10}>
-                        <Icon
-                            className={this.state.rateValue !== 0 ? style.swing : style.swing_gray}
-                            type={this.state.hideenCamp ? 'eye-invisible' : 'eye'}
-                            onClick={this.hideenCamp}
-                        />
-                        <span style={{ position: "absolute", right: "0" }}>{this.props.firstblood ? <Icon className={this.state.rateValue !== 0 ? style.swing : style.swing_gray} type="dingding" /> : ''}</span>
-                        <Rate onChange={this.rateChange} style={{ color: 'red' }} character={<Icon type="heart" theme="filled" />} allowClear value={this.state.rateValue} count={4} disabled={this.state.RateDisabled} />
+                        <Row type="flex" align="middle">
+                            <Col span={6}>
+                                <Icon
+                                    className={this.state.rateValue !== 0 ? style.swing : style.swing_gray}
+                                    type={this.state.hideenCamp ? 'eye-invisible' : 'eye'}
+                                    onClick={this.hideenCamp}
+                                    theme={this.state.hideenCamp ? 'filled' : 'outlined'}
+                                />
+                            </Col>
+                            <Col span={6}>
+                                <Icon
+                                    className={this.state.rateValue !== 0 && this.state.protect ? style.protect : style.protect_gray}
+                                    type="insurance"
+                                    onClick={this.protectChange}
+                                    theme={this.state.rateValue !== 0 && this.state.protect ? 'filled' : 'outlined'}
+                                />
+                            </Col>
+                            <Col span={6}>
+                                <Icon
+                                    className={this.state.rateValue !== 0 && this.state.keepFan ? style.fan : style.fan_gray}
+                                    type="heart"
+                                    onClick={this.keepFan}
+                                    theme={this.state.rateValue !== 0 && this.state.keepFan ? 'filled' : 'outlined'}
+                                />
+                            </Col>
+                            <Col span={6}>
+                                {this.props.firstblood ? <Icon className={this.state.rateValue !== 0 ? style.swing : style.swing_gray} type="dingding" /> : ''}
+                            </Col>
+                        </Row>
+                        <Row type="flex" align="middle">
+                            <Col span={24}>
+                                <Rate onChange={this.rateChange} style={{ color: 'red' }} character={<Icon type="heart" theme="filled" />} allowClear value={this.state.rateValue} count={4} disabled={this.state.RateDisabled} />
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
+                </Skeleton>
             </Card>
         );
     }

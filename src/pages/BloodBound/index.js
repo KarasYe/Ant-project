@@ -60,7 +60,7 @@ export default class GM extends Component{
         const random = Math.floor(Math.random()*this.state.roleList.length);
         const content = this.state.roleList.map((item,index)=>{
             return(
-                <Col span={6} key={'role'+index}>
+                <Col span={6} key={'role'+index} style={{minHeight:"16.67vh"}}>
                     <RoleCard roleInfo={item} index={index+1} firstblood={random === index}/>
                 </Col>
             )

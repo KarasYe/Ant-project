@@ -4,7 +4,7 @@
   "description": "Ant Design",
   "main": "index.js",
   "scripts": {
-    "analyze": "source-map-explorer ./build/umi.*",
+    "analyze": "source-map-explorer build/umi.*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "umi dev",
     "build": "umi build"

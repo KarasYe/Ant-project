@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import { Layout, Icon, Button, Row, Col, Modal } from 'antd';
-import { getLocale, setLocale } from 'umi/locale';
 import LayoutStyle from './index.less';
 import DrawerInfo from '../components/DrawerInfo';
 import RoleForm from '../components/RoleForm';
+import ModalInfo from '../components/ModalInfo';
 
 
 const { Header, Footer, Content } = Layout;
@@ -32,6 +32,53 @@ const GameRule = [
     {
         name: '技能发动：',
         content: '每个角色拥有不同的技能，只有在受到“攻击”亮明角色等级线索的时候可以发动技能（重要的地方已经加粗，受到技能伤害掉血是不能发动技能的；一般的，技能只能发动一次）。特殊的，4号炼金术师只有在挡刀的时候才能发动技能。技能不能被任何人挡掉。'
+    }
+];
+
+const playRule = [
+    {
+        name: '初始状态：',
+        imgUrl: 'https://www.09883883.work/Resume/img/bbc01.png',
+        content: '此时为初状态，其中第一排的图标分别表示不同技能和状态，大眼图标是法师技能发动触发的（可点击，具体效果参看角色技能），保护盾图标是护卫发动技能触发的（可点击，具体效果参看角色技能），粉色心形是情妇发动技能触发的（可点击，具体效果参看角色技能），最后一个翅膀图标表示开局第一个随机的持刀者。'
+    },
+    {
+        name: '残血状态：',
+        imgUrl: 'https://www.09883883.work/Resume/img/bbc02.png',
+        content: '此时为残血状态，其中第二排红心图标表示该玩家当前血量，只有血量只有一滴时候，最后的血量图标才可点击，第三排的“角色牌”和“阵营牌”是可点击的，并且是主要操作按钮（通过操作来扣除血量，角色牌在不被技能破坏情况下翻开才能发动该角色技能，操作角色牌和阵营牌并无先后顺序要求），具体操作见页面提示，其中最右的阵营牌为第一优先阵营（即当一个角色阵营有一个不确定时候这个就是默认不确定的阵营，通常为问号）'
+    },
+    {
+        name: '死亡状态：',
+        imgUrl: 'https://www.09883883.work/Resume/img/bbc03.png',
+        content: '此时为死亡状态，游戏当有一人死亡即可结束游戏，然后根据游戏规则，得出胜败双方。'
+    },
+    {
+        name: '角色身份信息细节：',
+        imgUrl: 'https://www.09883883.work/Resume/img/role.png',
+        content: '各个角色的角色编号技能和阵营说明，如图所示'
+    },
+    {
+        name: '进阶攻略01：',
+        content: '游戏开始，建议游戏人数在8～16人之间，用扑克牌A～10表示角色编号，这时我们选用黑桃和红心扑克牌，然后根据团队情况选出一个主持人（收集玩家信息并修改到菜单栏=》设置=》玩家信息），然后随机在黑桃和红心扑克牌A～9各抽同等数量的牌（数量各为玩家人数一半，如果玩家人数为奇数可再后续抽取中插入审判者牌号，一般为10）'
+    },
+    {
+        name:'进阶攻略02：',
+        content: '游戏前期准备工作完成后（真实身份牌抽取后），还需要每位玩家抽取表示自方阵营的阵营牌，可以用剩下扑克牌表示，抽对应颜色即可，特别注意的是小丑角色的玩家在此时应该抽取与自己阵营相反的颜色牌（小丑就是搅屎棍的意义），待主持收集完信息并录入完成后便可参照页面第一位持刀者开始进行第一轮游戏。'
+    },
+    {
+        name:'温馨提示：',
+        content: '请主持要切记，当游戏开始时候不要随便操作右上角的三个主要按钮设置（重置，设置，开始）以防出现数据初始化导致游戏失败，玩家信息录入完成务必点确定提交，否则无法更新数据，请玩家务必遵循游戏规则（长老，护卫和情妇技能效果需要紧记）进行游戏，此游戏精彩之处是需要大家多去玩玩，好好琢磨琢磨的，祝各位游戏愉快！也欢迎大家多多提意见和改进建议。（此处产品经理可以忽略）'
+    },
+    {
+        name: '高阶玩法讨论01：',
+        content: ' 刺客和小丑互装：刺客和小丑的等级很接近，同时线索有都是两个“？”。在游戏时往往可以互相装作对面阵营的角色（例如蓝色刺客，装作是红色小丑）。由于两个角色等级都很高，聊一聊会有玩家帮忙挡刀，运气好还可以骗盾牌，可以削弱对方阵营的实力。'
+    },
+    {
+        name: '高阶玩法讨论02：',
+        content: '789等级角色受到伤害可以先亮阵营线索，迷惑对方。一般的，掉第一滴血的时候，789都会选择掉“？”，因为可以掩饰自己的阵营。这样就会导致一旦第一个亮了阵营，一般就是156。156在阵营中均是要么地位重要，要么技能重要，所以789可以先亮阵营嘲讽一波，吸伤害，掩护己方大哥。'
+    },
+    {
+        name: '高阶玩法讨论03：',
+        content: '大哥防狂战：有时候首领不要主动出刀，让己方小弟出刀，以防对方有狂战士刚烈。'
     }
 ];
 
@@ -89,48 +136,6 @@ const GameRole = [
 ]
 
 export default class BasicLayout extends Component {
-    state = {
-        visible: false
-    };
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
-    }
-
-    handleOk = (e) => {
-        this.setState({
-            visible: false,
-        });
-        localStorage.clear()
-        setTimeout(()=>{
-            location.reload()
-        },0)
-    }
-
-    handleCancel = (e) => {
-        this.setState({
-            visible: false,
-        });
-    }
-    changeLang = () => {
-        const locale = getLocale();
-        if (!locale || locale === 'zh-CN') {
-            setLocale('en-US');
-        } else {
-            setLocale('zh-CN');
-        }
-    };
-    handleClick = (e) => {
-        if (!sessionStorage['currentKey']) {
-            sessionStorage.setItem('currentKey', e.key)
-        } else {
-            sessionStorage['currentKey'] = e.key
-        }
-        this.setState({
-            current: e.key,
-        });
-    };
     render() {
         return (
             <Layout>
@@ -138,13 +143,13 @@ export default class BasicLayout extends Component {
                     <Header className={LayoutStyle.dark_header}>
                         <Row type="flex" justify="center">
                             <Col span={2}>
-                                <DrawerInfo name="角色" data={GameRole} type="role" width="50%" placement="right" />
+                                <DrawerInfo name="角色" data={GameRole} type="team" width="768px" placement="right" />
                             </Col>
                             <Col span={2}>
-                                <DrawerInfo name="规则" data={GameRule} type="rule" width="50%" placement="right" />
+                                <DrawerInfo name="规则" data={GameRule} type="notification" width="768px" placement="right" />
                             </Col>
                             <Col span={2}>
-                                <DrawerInfo name="细节" data={GameRule} type="rule" width="50%" placement="right" />
+                                <DrawerInfo name="玩法" data={playRule} type="key" width="768px" placement="right" />
                             </Col>
                             <Col span={3}>
                                 <span style={{ color: "#EC4521", marginRight: "5px" }}>红色联盟</span>
@@ -160,30 +165,18 @@ export default class BasicLayout extends Component {
                                 <span style={{ color: "#21A3EC", marginLeft: "5px" }}>蓝色联盟</span>
                             </Col>
                             <Col span={2}>
-                                <Button type="primary" onClick={this.showModal}>
-                                    <Icon type="reload" />重置
-                                </Button>
-                                <Modal
-                                    title="⚠️操作警告"
-                                    visible={this.state.visible}
-                                    onOk={this.handleOk}
-                                    onCancel={this.handleCancel}
-                                >
-                                    <p>此次操作会重置和还原初始化状态！会清空修改和新增玩家的数据，请谨慎操作。</p>
-                                </Modal>
+                                <ModalInfo name="重置" type="reload" tip="此次操作会重置和还原初始化状态！会清空修改和新增玩家的数据，请谨慎操作。" />
                             </Col>
                             <Col span={2}>
-                                <RoleForm name="设置" width="720px" placement="left" />
+                                <RoleForm name="设置" type="setting" width="888px" placement="left" />
                             </Col>
                             <Col span={2}>
-                                <Button type="primary" onClick={() => { location.reload(); }}>
-                                    <Icon type="poweroff" />开始
-                                </Button>
+                            <ModalInfo name="开始" type="poweroff" tip="此次操作会重置玩家现有状态并重新开始游戏！请谨慎操作。" />
                             </Col>
                         </Row>
                     </Header>
                     <Content className={LayoutStyle.content_wrapper}>
-                        <div className={LayoutStyle.subWrapper}>
+                        <div className={LayoutStyle.subWrapperBB}>
                             {this.props.children}
                         </div>
                     </Content>

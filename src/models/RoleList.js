@@ -101,12 +101,19 @@ const state = localStorage['role'] ? JSON.parse(localStorage.getItem('role')) : 
         {
             id: 15,
             player: 'J',
-            role: '情妇',
+            role: '护卫',
             camp: 'blue',
             avatar: 'https://www.09883883.work/Resume/img/j.jpg'
+        },
+        {
+            id: 16,
+            player: '萧何',
+            role: '情妇',
+            camp: 'blue',
+            avatar: 'https://www.09883883.work/Resume/img/xiaohe.jpg'
         }
     ],
-    counter: 12
+    counter: 16
 }
 
 export default {
@@ -137,6 +144,6 @@ export default {
                 data: currentData,
                 counter: nextCounter
             };
-        }
+        },
     },
 };
