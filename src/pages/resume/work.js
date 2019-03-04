@@ -12,7 +12,7 @@ const workData = [{
   worker: 'web前端',
   workTime: '2018.03~2018.12',
   item: "中企高呈",
-  type: "国企",
+  type: "上市",
   count: 10,
   des: [
     '1、负责公司项目前端页面的开发工作;',
